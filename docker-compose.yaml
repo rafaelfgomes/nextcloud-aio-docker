@@ -1,0 +1,20 @@
+services:
+  nextcloud-aio-mastercontainer:
+    image: ghcr.io/nextcloud-releases/all-in-one
+    container_name: nextcloud-aio
+    restart: always
+    ports:
+      - "${PORT1:-80}:80"
+      - "${PORT2:-8080}:8080"
+      - "${PORT3:-8443}:8443"
+    volumes:
+      - ${CONFIG_FOLDER:-./config}:/mnt/docker-aio-config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    # Equivalente ao --sig-proxy=false
+    stop_signal: SIGKILL
+    networks:
+      - net
+
+networks:
+  net:
+    external: false
