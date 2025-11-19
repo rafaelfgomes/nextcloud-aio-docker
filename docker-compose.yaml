@@ -1,7 +1,7 @@
 services:
   nextcloud-aio-mastercontainer:
     image: ghcr.io/nextcloud-releases/all-in-one
-    container_name: nextcloud-aio
+    container_name: nextcloud-aio-mastercontainer
     restart: always
     ports:
       - "${PORT1:-80}:80"
